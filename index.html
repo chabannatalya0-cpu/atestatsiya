@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Картка вивчення педагогічного досвіду</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Анкета для вчителя: зміст-навігація зліва, розділи картки справа, кнопка надсилання в кінці й у нижній панелі */
+  --bg:#eef1f5; --surface:#ffffff; --surface-2:#f5f7fa; --ink:#1b2230; --muted:#5a6475; --line:#d6dbe3;
+  --accent:#2b4c7e; --accent-ink:#ffffff; --accent-soft:#e3eaf5;
+  --hi:#1f7a4a; --hi-soft:#dcf0e3; --warn:#a3640c; --warn-soft:#fbeed6; --low:#b0362c; --low-soft:#f7e0dd;
+  --font-display:"Literata", Georgia, "Times New Roman", serif;
+  --font-body:"IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --r:10px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#10141b; --surface:#171d26; --surface-2:#1d2430; --ink:#e5e9f0; --muted:#9ba5b6; --line:#2b3442;
+    --accent:#8db0ea; --accent-ink:#0f1520; --accent-soft:#1f2c42; --hi:#5cc48c; --hi-soft:#173326;
+    --warn:#e8ab4c; --warn-soft:#382a12; --low:#f07a6e; --low-soft:#3b1c19; color-scheme:dark; }
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{scroll-padding-top:80px}
+body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 var(--font-body); -webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0; text-wrap:balance}
+h1{font:700 28px/1.2 var(--font-display); letter-spacing:-.01em}
+h2{font:700 20px/1.3 var(--font-display)}
+h3{font:600 15px/1.4 var(--font-body)}
+p{margin:0}
+a{color:var(--accent)}
+button,input,select,textarea{font:inherit; color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+.top{position:sticky; top:0; z-index:20; background:var(--surface); border-bottom:1px solid var(--line)}
+.top-in{max-width:1180px; margin:0 auto; padding:10px 20px; display:flex; align-items:center; gap:16px}
+.top b{font:700 16px/1.2 var(--font-display)}
+.top .sub{font-size:12px; color:var(--muted)}
+.top .grow{flex:1; min-width:0}
+.meter{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--muted); white-space:nowrap}
+.meter .bar{width:140px}
+.saved{font-size:12.5px; color:var(--muted); white-space:nowrap}
+
+.wrap{max-width:1180px; margin:0 auto; padding:24px 20px 120px; display:grid; grid-template-columns:230px minmax(0,1fr); gap:28px; align-items:start}
+.toc{position:sticky; top:84px; display:grid; gap:2px}
+.toc a{display:flex; gap:8px; align-items:flex-start; padding:7px 10px; border-radius:8px; color:var(--muted); text-decoration:none; font-size:14px; line-height:1.35}
+.toc a:hover{background:var(--surface); color:var(--ink)}
+.toc .dot{flex:none; width:18px; height:18px; border-radius:50%; border:1.5px solid var(--line); margin-top:1px; display:grid; place-items:center; font-size:11px; font-weight:700; color:var(--muted)}
+.toc a.done .dot{background:var(--hi); border-color:var(--hi); color:#fff}
+.toc a.part .dot{border-color:var(--warn); color:var(--warn)}
+
+.form{display:grid; gap:18px; min-width:0}
+.intro{display:grid; gap:10px}
+.intro .school{font-size:13px; color:var(--muted); font-weight:500}
+.intro p{color:var(--muted); max-width:72ch}
+.howto{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:4px}
+.howto div{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:10px 12px; font-size:14px}
+.howto b{display:block; font-size:12px; color:var(--accent); text-transform:uppercase; letter-spacing:.05em; margin-bottom:2px}
+
+.card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:20px 22px; display:grid; gap:14px}
+.sec-head{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+.sec-head .lead{color:var(--muted); font-size:14px; margin-top:4px; max-width:72ch}
+.grid{display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:14px 16px}
+.s2{grid-column:span 2} .s3{grid-column:span 3} .s4{grid-column:span 4} .s6{grid-column:span 6}
+.fld{display:grid; gap:5px; min-width:0; align-content:start}
+.fld label,.lbl{font-size:13.5px; font-weight:500; color:var(--ink)}
+.req{color:var(--low); margin-left:2px}
+.hint{font-size:12.5px; color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],input[type=number],input[type=url],select,textarea{width:100%; border:1px solid var(--line); border-radius:8px; background:var(--surface); padding:9px 11px; min-height:40px}
+textarea{min-height:92px; resize:vertical; line-height:1.5}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent); outline-offset:-1px; border-color:var(--accent)}
+.fld.err input,.fld.err select,.fld.err textarea{border-color:var(--low); background:var(--low-soft)}
+.fld.err .errmsg{display:block}
+.errmsg{display:none; font-size:12.5px; color:var(--low)}
+
+.check-box{border-radius:8px; padding:10px 12px; font-size:14px; background:var(--surface-2); border:1px solid var(--line)}
+.check-box.ok{background:var(--hi-soft); border-color:transparent}
+.check-box.warn{background:var(--warn-soft); border-color:transparent}
+
+/* таблиці-повторювачі */
+.rep{overflow-x:auto; border:1px solid var(--line); border-radius:8px}
+.rep table{width:100%; border-collapse:collapse; font-size:14px; min-width:720px}
+.rep th{text-align:left; font-size:12.5px; font-weight:600; color:var(--muted); padding:8px; background:var(--surface-2); border-bottom:1px solid var(--line); white-space:nowrap}
+.rep td{padding:6px; border-bottom:1px solid var(--line); vertical-align:top}
+.rep tr:last-child td{border-bottom:0}
+.rep td input,.rep td select{min-height:36px; padding:6px 8px; font-size:14px}
+.rep td.c{text-align:center; vertical-align:middle}
+.rep td.c input{width:18px; height:18px; accent-color:var(--accent)}
+.rep .empty td{color:var(--muted); text-align:center; padding:16px}
+.rep-foot{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+.total{font-size:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.total b{font-variant-numeric:tabular-nums}
+.bar{height:8px; background:var(--surface-2); border:1px solid var(--line); border-radius:4px; overflow:hidden; width:180px}
+.bar i{display:block; height:100%; background:var(--accent)}
+.bar i.ok{background:var(--hi)}
+
+/* компетентності */
+.func{display:grid; gap:2px}
+.func > h3{color:var(--accent); font-size:13.5px; padding:12px 0 4px}
+.comp{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px 18px; padding:12px 0; border-top:1px solid var(--line)}
+.comp .ct{display:grid; gap:2px}
+.comp .ct b{font-weight:600}
+.comp details{font-size:13px; color:var(--muted)}
+.comp summary{cursor:pointer; width:max-content}
+.comp details ul{margin:6px 0 0; padding-left:18px; display:grid; gap:2px}
+.comp .ex{grid-column:1 / -1}
+.comp .ex textarea{min-height:56px}
+.scale-legend{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; font-size:13px}
+.scale-legend div{border:1px solid var(--line); border-radius:8px; padding:8px 10px; background:var(--surface-2)}
+.scale-legend b{font-variant-numeric:tabular-nums; color:var(--accent)}
+.seg{display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; align-self:start}
+.seg label{position:relative; display:block}
+.seg input{position:absolute; inset:0; opacity:0; margin:0; cursor:pointer; width:100%; height:100%}
+.seg span{display:block; min-width:42px; padding:7px 10px; text-align:center; font-weight:600; font-variant-numeric:tabular-nums; border-left:1px solid var(--line); cursor:pointer; user-select:none}
+.seg label:first-child span{border-left:0}
+.seg label:hover span{background:var(--surface-2)}
+.seg input:checked + span{background:var(--accent); color:var(--accent-ink)}
+.seg input:focus-visible + span{outline:2px solid var(--accent); outline-offset:-2px}
+.compsum{display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:6px; align-items:end; height:90px; padding-top:6px}
+.compsum .col{display:grid; gap:4px; justify-items:center; align-content:end; height:100%}
+.compsum .col i{display:block; width:100%; max-width:28px; border-radius:4px 4px 0 0; background:var(--accent)}
+.compsum .col span{font-size:11.5px; color:var(--muted)}
+
+/* відповідність */
+.tchk{display:grid; gap:10px}
+.tchk .row{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px 16px; align-items:start; padding:10px 0; border-top:1px solid var(--line)}
+.tchk label.cb{display:flex; gap:10px; align-items:flex-start; font-size:14.5px; cursor:pointer}
+.tchk label.cb input,.agree input{width:18px; height:18px; margin-top:3px; accent-color:var(--accent); flex:none}
+.agree{display:flex; gap:10px; align-items:flex-start; font-size:14.5px; cursor:pointer}
+
+/* надсилання */
+.submit-card{border:2px solid var(--accent)}
+.actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:6px; font-weight:600; font-size:15px; border-radius:8px; padding:10px 16px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; text-decoration:none; white-space:nowrap}
+.btn:hover{background:var(--surface-2)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.07)}
+.btn.sm{font-size:13.5px; padding:6px 11px}
+.btn.ghost{background:transparent; border-color:transparent; color:var(--accent)}
+.btn.ghost:hover{background:var(--accent-soft)}
+.btn.icon{padding:6px 9px; color:var(--muted)}
+.btn:disabled{opacity:.55; cursor:not-allowed}
+.status{font-size:14.5px}
+.status.ok{color:var(--hi)} .status.err{color:var(--low)} .status.warn{color:var(--warn)}
+.errlist{margin:0; padding-left:20px; font-size:14px; color:var(--low)}
+.done-box{background:var(--hi-soft); border-radius:8px; padding:12px 14px; font-size:14.5px}
+
+.mbar{position:fixed; left:0; right:0; bottom:0; z-index:20; background:var(--surface); border-top:1px solid var(--line); display:none; padding:10px 16px; align-items:center; justify-content:space-between; gap:12px}
+.toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:var(--surface); padding:10px 16px; border-radius:8px; font-size:14px; opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; z-index:40; max-width:calc(100% - 32px)}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  .toc{display:none}
+  .mbar{display:flex}
+  .toast{bottom:84px}
+  .howto{grid-template-columns:1fr}
+  .meter .bar{width:80px}
+}
+@media (max-width:640px){
+  .top-in{padding:8px 14px; gap:10px}
+  .top .sub,.saved{display:none}
+  .wrap{padding:16px 14px 120px}
+  h1{font-size:23px}
+  .card{padding:16px}
+  .grid{grid-template-columns:1fr}
+  .s2,.s3,.s4,.s6{grid-column:span 1}
+  .comp{grid-template-columns:1fr}
+  .scale-legend{grid-template-columns:1fr 1fr}
+  .tchk .row{grid-template-columns:1fr}
+  .compsum span{font-size:10px}
+}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; scroll-behavior:auto !important} }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="grow"><b>Картка вивчення педагогічного досвіду</b><div class="sub" id="top-school"></div></div>
+    <div class="meter" aria-live="polite"><span id="meter-t">Заповнено 0%</span><span class="bar"><i id="meter-b" style="width:0"></i></span></div>
+    <span class="saved" id="saved">Чернетка зберігається автоматично</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc" id="toc" aria-label="Розділи картки"></nav>
+  <form class="form" id="card" novalidate></form>
+</div>
+
+<div class="mbar"><span id="mb-meter">Заповнено 0%</span><button type="button" class="btn primary" id="mb-send">Надіслати картку</button></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js"></script>
+<script>
+(function () {
+'use strict';
+
+/* ===== Налаштування ===== */
+const CONFIG = {
+  endpoint: '',
+  school: "КЗ «Василівський ліцей «Сузір'я»» Василівської міської ради Запорізької області",
+  year: '2026/2027'
+};
+
+/* ===== Довідники ===== */
+const EDU = [['', '— оберіть —'], ['fmb', 'Фаховий молодший бакалавр (молодший спеціаліст)'], ['mb', 'Молодший бакалавр'], ['bak', 'Бакалавр'], ['mag', 'Магістр (спеціаліст)']];
+const CATS = [['', '— оберіть —'], ['none', 'Немає'], ['spec', '«спеціаліст»'], ['spec2', '«спеціаліст другої категорії»'], ['spec1', '«спеціаліст першої категорії»'], ['specV', '«спеціаліст вищої категорії»']];
+const TITLES = [['none', 'Немає'], ['senior', '«старший учитель»'], ['methodist', '«учитель-методист»']];
+const ATT = [['regular', 'Чергова'], ['extra', 'Позачергова']];
+const GOAL_CAT = [['', '— оберіть —'], ['confirm', 'Відповідність раніше присвоєній категорії'], ['spec2', 'Присвоєння «спеціаліст другої категорії»'], ['spec1', 'Присвоєння «спеціаліст першої категорії»'], ['specV', 'Присвоєння «спеціаліст вищої категорії»']];
+const GOAL_TITLE = [['none', 'Не претендую'], ['senior_new', 'Присвоєння «старший учитель»'], ['senior_conf', 'Підтвердження «старший учитель»'], ['meth_new', 'Присвоєння «учитель-методист»'], ['meth_conf', 'Підтвердження «учитель-методист»']];
+const CAT_REQ = {
+  spec2: { edu: ['fmb', 'mb', 'bak', 'mag'], years: 3, txt: 'освітній рівень не нижче молодшого бакалавра (молодшого спеціаліста) і педагогічний стаж від 3 років' },
+  spec1: { edu: ['bak', 'mag'], years: 5, txt: 'освітній рівень бакалавра або магістра і педагогічний стаж від 5 років' },
+  specV: { edu: ['mag'], years: 7, txt: 'освітній рівень магістра (спеціаліста) і педагогічний стаж від 7 років' }
+};
+const PK_FORMS = ['Курси', 'Тренінг', 'Семінар', 'Вебінар', 'Онлайн-курс', 'Конференція', 'Стажування', 'Неформальна освіта', 'Інше'];
+const LEVELS = ['Заклад', 'Громада, місто', 'Обласний', 'Всеукраїнський', 'Міжнародний'];
+const METH_KINDS = ['Публікація', 'Виступ (семінар, конференція, педрада)', 'Відкритий урок, майстер-клас', 'Авторська розробка, цифровий ресурс', 'Навчальна програма, посібник', 'Наставництво, супервізія', 'Робота в ЦМК, творчій групі', 'Фаховий конкурс', 'Експертна діяльність', 'Інше'];
+const SCALE = [[1, 'Початковий', 'потребую підтримки й навчання'], [2, 'Базовий', 'виконую за зразком, з порадами колег'], [3, 'Достатній', 'виконую самостійно і впевнено'], [4, 'Високий', 'можу навчати колег, ділюся досвідом']];
+const FUNCS = [
+  { f: 'А', t: 'Навчання здобувачів освіти предметів (інтегрованих курсів)', comps: [
+    ['А1', 'Мовно-комунікативна компетентність', ['навчання державною мовою', 'урахування мовного середовища закладу', 'використання іноземної мови в професійному колі', 'розвиток мовно-комунікативних умінь учнів']],
+    ['А2', 'Предметно-методична компетентність', ['моделювання змісту за обов’язковими результатами навчання', 'формування ключових компетентностей і наскрізних умінь', 'інтегроване навчання', 'сучасні методики й технології навчання та виховання', 'формування ціннісних ставлень']],
+    ['А3', 'Інформаційно-цифрова компетентність', ['пошук і критичне оцінювання інформації', 'використання та створення цифрових ресурсів', 'цифрові технології в освітньому процесі']] ] },
+  { f: 'Б', t: 'Партнерська взаємодія з учасниками освітнього процесу', comps: [
+    ['Б1', 'Психологічна компетентність', ['урахування вікових та індивідуальних особливостей', 'стратегії, що розвивають позитивну самооцінку', 'мотивація й організація пізнавальної діяльності', 'спільнота учнів, де поважають права кожного']],
+    ['Б2', 'Емоційно-етична компетентність', ['усвідомлення власних і чужих емоцій та потреб', 'конструктивна й безпечна взаємодія', 'розуміння взаємозалежності людей і систем']],
+    ['Б3', 'Компетентність педагогічного партнерства', ['суб’єкт-суб’єктна взаємодія з учнями', 'залучення батьків до освітнього процесу', 'командна робота з фахівцями підтримки']] ] },
+  { f: 'В', t: 'Участь в організації безпечного та здорового освітнього середовища', comps: [
+    ['В1', 'Інклюзивна компетентність', ['інклюзивне освітнє середовище', 'педагогічна підтримка учнів з ООП', 'сприятливі умови для кожного учня']],
+    ['В2', 'Здоров’язбережувальна компетентність', ['безпечне середовище і здоров’язбережувальні технології', 'профілактично-просвітницька робота', 'культура здорового й безпечного способу життя', 'власне фізичне і психоемоційне здоров’я', 'домедична допомога']] ] },
+  { f: 'Г', t: 'Провадження освітнього процесу', comps: [
+    ['Г1', 'Прогностична компетентність', ['прогнозування результатів освітнього процесу', 'планування освітнього процесу']],
+    ['Г2', 'Організаційна компетентність', ['організація навчання, виховання й розвитку', 'різні види й форми навчальної діяльності', 'осередки навчання й розвитку']],
+    ['Г3', 'Оцінювально-аналітична компетентність', ['оцінювання результатів навчання', 'аналіз результатів навчання', 'самооцінювання й взаємооцінювання учнів']] ] },
+  { f: 'Д', t: 'Безперервний професійний розвиток', comps: [
+    ['Д1', 'Здатність до навчання впродовж життя', ['власний професійний розвиток і підтримка від колег', 'підтримка колег у їхньому розвитку', 'інноваційна діяльність']] ] }
+];
+const COMP_LIST = FUNCS.reduce(function (a, f) { return a.concat(f.comps); }, []);
+const TCHK = [
+  ['t1', 'Впроваджую і поширюю методики компетентнісного навчання, нові освітні технології'],
+  ['t2', 'Надаю професійну підтримку колегам (наставництво, супервізія, консультації)'],
+  ['t3', 'Беру участь у заходах із забезпечення якості освіти, впровадження інновацій'],
+  ['t4', 'Маю авторські методичні розробки, публікації, навчальні програми'],
+  ['t5', 'Переможець або лауреат фахових конкурсів'],
+  ['t6', 'Підготував(-ла) переможців олімпіад, конкурсів, змагань']
+];
+const REPS = {
+  pk: { cols: [
+    { k: 'year', l: 'Рік', type: 'number', w: 80 }, { k: 'provider', l: 'Суб’єкт підвищення кваліфікації', w: 200 },
+    { k: 'topic', l: 'Тема, програма', w: 240 }, { k: 'form', l: 'Форма', type: 'select', opts: PK_FORMS, w: 140 },
+    { k: 'hours', l: 'Годин', type: 'number', w: 80 }, { k: 'oop', l: 'ООП', type: 'check', w: 50, title: 'Тематика стосується роботи з учнями з ООП' },
+    { k: 'doc', l: 'Документ: № або посилання', w: 200 }], empty: 'Додайте курси, тренінги, вебінари за останні 5 років.' },
+  ach: { cols: [
+    { k: 'year', l: 'Рік', type: 'number', w: 80 }, { k: 'event', l: 'Олімпіада, конкурс, МАН, змагання', w: 240 },
+    { k: 'level', l: 'Рівень', type: 'select', opts: LEVELS, w: 150 }, { k: 'student', l: 'Учень (учениця), клас', w: 180 },
+    { k: 'result', l: 'Результат', w: 150 }], empty: 'Додайте результати участі учнів.' },
+  meth: { cols: [
+    { k: 'year', l: 'Рік', type: 'number', w: 80 }, { k: 'kind', l: 'Вид', type: 'select', opts: METH_KINDS, w: 210 },
+    { k: 'title', l: 'Назва, тема', w: 240 }, { k: 'level', l: 'Рівень', type: 'select', opts: LEVELS, w: 150 },
+    { k: 'link', l: 'Посилання, підтвердження', w: 200 }], empty: 'Додайте публікації, виступи, відкриті уроки, розробки.' }
+};
+
+/* ===== Стан ===== */
+const LS = 'atestKartka.v1';
+function newId() { return 'k' + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function blank() {
+  const comp = {}; COMP_LIST.forEach(function (c) { comp[c[0]] = { lvl: 0, ex: '' }; });
+  const tchk = {}; TCHK.forEach(function (t) { tchk[t[0]] = { on: false, proof: '' }; });
+  return { id: newId(), fio: '', position: 'учитель', subjects: '', email: '', phone: '', eduLevel: '', eduInst: '', eduSpec: '', stazh: '', stazhHere: '', prevAtt: '',
+    curCat: '', curTitle: 'none', attType: 'regular', goalCat: '', goalTitle: 'none',
+    pk: [], expTopic: '', expActual: '', expIdea: '', expTheory: '', expTech: '', expResult: '', expFuture: '', portfolio: '',
+    comp: comp, studentsDyn: '', ach: [], extracurr: '', meth: [], methodCmk: '', tchk: tchk, selfBest: '', selfNext: '', agree: false, sentAt: '' };
+}
+let D = (function () {
+  try { const raw = localStorage.getItem(LS); if (raw) { const o = JSON.parse(raw); const b = blank(); return Object.assign(b, o, { comp: Object.assign(b.comp, o.comp || {}), tchk: Object.assign(b.tchk, o.tchk || {}) }); } } catch (e) { /* немає доступу */ }
+  return blank();
+})();
+let saveT = null;
+function save() {
+  clearTimeout(saveT);
+  saveT = setTimeout(function () {
+    try { localStorage.setItem(LS, JSON.stringify(D)); $('#saved').textContent = 'Чернетку збережено о ' + new Date().toLocaleTimeString('uk-UA', { hour: '2-digit', minute: '2-digit' }); }
+    catch (e) { $('#saved').textContent = 'Чернетка не зберігається в цьому браузері'; }
+  }, 300);
+}
+
+/* ===== Допоміжне ===== */
+function $(s, r) { return (r || document).querySelector(s); }
+function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function label(list, v) { const x = list.find(function (p) { return p[0] === v; }); return x ? x[1] : ''; }
+function filled(v) { return v != null && String(v).trim() !== ''; }
+function num(v) { const n = parseFloat(String(v).replace(',', '.')); return isNaN(n) ? 0 : n; }
+let toastT = null;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.className = 'toast show'; clearTimeout(toastT); toastT = setTimeout(function () { t.className = 'toast'; }, 3500); }
+
+/* ===== Поля ===== */
+function fld(k, l, o) {
+  o = o || {};
+  const id = 'f-' + k, v = D[k];
+  let ctl;
+  if (o.type === 'select') ctl = '<select id="' + id + '" data-k="' + k + '">' + o.opts.map(function (p) { return '<option value="' + esc(p[0]) + '"' + (v === p[0] ? ' selected' : '') + '>' + esc(p[1]) + '</option>'; }).join('') + '</select>';
+  else if (o.type === 'textarea') ctl = '<textarea id="' + id + '" data-k="' + k + '" rows="' + (o.rows || 4) + '"' + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : '') + '>' + esc(v) + '</textarea>';
+  else ctl = '<input id="' + id + '" data-k="' + k + '" type="' + (o.type || 'text') + '"' + (o.type === 'number' ? ' min="0" inputmode="numeric"' : '') + (o.ph ? ' placeholder="' + esc(o.ph) + '"' : '') + (o.ac ? ' autocomplete="' + o.ac + '"' : ' autocomplete="off"') + ' value="' + esc(v) + '">';
+  return '<div class="fld ' + (o.span || 's6') + '" id="w-' + k + '"><label for="' + id + '">' + l + (o.req ? '<span class="req" aria-hidden="true">*</span>' : '') + '</label>' + ctl +
+    (o.hint ? '<span class="hint">' + o.hint + '</span>' : '') + '<span class="errmsg">' + (o.err || 'Заповніть це поле') + '</span></div>';
+}
+function repHtml(key) {
+  const cfg = REPS[key], rows = D[key];
+  const head = '<tr>' + cfg.cols.map(function (c) { return '<th style="min-width:' + c.w + 'px"' + (c.title ? ' title="' + esc(c.title) + '"' : '') + '>' + c.l + '</th>'; }).join('') + '<th aria-label="Дії"></th></tr>';
+  const body = rows.length ? rows.map(function (r, i) {
+    return '<tr>' + cfg.cols.map(function (c) {
+      const id = 'r-' + key + '-' + i + '-' + c.k, aria = ' aria-label="' + esc(c.l + ', рядок ' + (i + 1)) + '"';
+      if (c.type === 'select') return '<td><select id="' + id + '" data-rep="' + key + '" data-i="' + i + '" data-c="' + c.k + '"' + aria + '><option value=""></option>' + c.opts.map(function (o) { return '<option' + (r[c.k] === o ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') + '</select></td>';
+      if (c.type === 'check') return '<td class="c"><input type="checkbox" id="' + id + '" data-rep="' + key + '" data-i="' + i + '" data-c="' + c.k + '"' + (r[c.k] ? ' checked' : '') + aria + '></td>';
+      return '<td><input type="' + (c.type === 'number' ? 'number' : 'text') + '" id="' + id + '" data-rep="' + key + '" data-i="' + i + '" data-c="' + c.k + '" value="' + esc(r[c.k]) + '"' + aria + (c.type === 'number' ? ' min="0" inputmode="numeric"' : '') + ' autocomplete="off"></td>';
+    }).join('') + '<td class="c"><button type="button" class="btn icon" data-del="' + key + '" data-i="' + i + '" aria-label="Видалити рядок ' + (i + 1) + '" title="Видалити рядок">✕</button></td></tr>';
+  }).join('') : '<tr class="empty"><td colspan="' + (cfg.cols.length + 1) + '">' + cfg.empty + '</td></tr>';
+  return '<div class="rep"><table><thead>' + head + '</thead><tbody id="rb-' + key + '">' + body + '</tbody></table></div>';
+}
+
+/* ===== Розділи ===== */
+const SECTIONS = [
+  { id: 's1', t: 'Загальні відомості', check: function () { return [D.fio, D.subjects, D.email, D.eduLevel, D.stazh, D.curCat, D.goalCat]; } },
+  { id: 's2', t: 'Підвищення кваліфікації', check: function () { return [D.pk.length ? 'x' : '', totalHours() >= 150 ? 'x' : '']; } },
+  { id: 's3', t: 'Опис педагогічного досвіду', check: function () { return [D.expTopic, D.expActual, D.expIdea, D.expTech, D.expResult]; } },
+  { id: 's4', t: 'Самооцінювання компетентностей', check: function () { return COMP_LIST.map(function (c) { return D.comp[c[0]].lvl ? 'x' : ''; }); } },
+  { id: 's5', t: 'Результати учнів', check: function () { return [D.studentsDyn, D.ach.length || D.extracurr ? 'x' : '']; } },
+  { id: 's6', t: 'Методична діяльність', check: function () { return [D.meth.length ? 'x' : '', D.methodCmk]; } },
+  { id: 's7', t: 'Відповідність меті атестації', check: function () { return [D.goalCat, D.goalTitle === 'none' || TCHK.some(function (t) { return D.tchk[t[0]].on; }) ? 'x' : '']; } },
+  { id: 's8', t: 'Самоаналіз і надсилання', check: function () { return [D.selfBest, D.selfNext, D.agree ? 'x' : '']; } }
+];
+function totalHours() { return D.pk.reduce(function (s, r) { return s + num(r.hours); }, 0); }
+function oopHours() { return D.pk.reduce(function (s, r) { return s + (r.oop ? num(r.hours) : 0); }, 0); }
+function compAvg() { const xs = COMP_LIST.map(function (c) { return D.comp[c[0]].lvl; }).filter(Boolean); return xs.length ? Math.round(xs.reduce(function (a, b) { return a + b; }, 0) / xs.length * 10) / 10 : 0; }
+
+function render() {
+  $('#top-school').textContent = CONFIG.school;
+  $('#toc').innerHTML = SECTIONS.map(function (s, i) { return '<a href="#' + s.id + '" id="toc-' + s.id + '"><span class="dot">' + (i + 1) + '</span><span>' + s.t + '</span></a>'; }).join('');
+  const comps = FUNCS.map(function (f) {
+    return '<div class="func"><h3>' + f.f + '. ' + esc(f.t) + '</h3>' + f.comps.map(function (c) {
+      const cur = D.comp[c[0]];
+      return '<div class="comp"><div class="ct"><b>' + c[0] + '. ' + esc(c[1]) + '</b><details><summary>Що охоплює</summary><ul>' + c[2].map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul></details></div>' +
+        '<div class="seg" role="radiogroup" aria-label="Рівень: ' + esc(c[1]) + '">' + SCALE.map(function (s) { const id = 'c-' + c[0] + '-' + s[0]; return '<label for="' + id + '" title="' + s[1] + ': ' + s[2] + '"><input type="radio" id="' + id + '" name="c-' + c[0] + '" value="' + s[0] + '" data-comp="' + c[0] + '"' + (cur.lvl === s[0] ? ' checked' : '') + '><span>' + s[0] + '</span></label>'; }).join('') + '</div>' +
+        '<div class="ex"><textarea id="cx-' + c[0] + '" data-compex="' + c[0] + '" rows="2" aria-label="Приклад із практики: ' + esc(c[1]) + '" placeholder="Приклад із практики (необов’язково): що саме робите, де це видно">' + esc(cur.ex) + '</textarea></div></div>';
+    }).join('') + '</div>';
+  }).join('');
+  const tchk = TCHK.map(function (t) {
+    const cur = D.tchk[t[0]];
+    return '<div class="row"><label class="cb" for="t-' + t[0] + '"><input type="checkbox" id="t-' + t[0] + '" data-tchk="' + t[0] + '"' + (cur.on ? ' checked' : '') + '><span>' + esc(t[1]) + '</span></label>' +
+      '<input type="text" id="tp-' + t[0] + '" data-tproof="' + t[0] + '" value="' + esc(cur.proof) + '" placeholder="Підтвердження: назва, рік, посилання" aria-label="Підтвердження: ' + esc(t[1]) + '" autocomplete="off"></div>';
+  }).join('');
+
+  $('#card').innerHTML =
+    '<section class="intro"><div class="school">' + esc(CONFIG.school) + '</div><h1>Картка вивчення педагогічного досвіду</h1>' +
+    '<p>Заповнює педагогічний працівник, який атестується у ' + CONFIG.year + ' н. р. Картка допомагає атестаційній комісії вивчити ваш практичний досвід відповідно до Положення про атестацію педагогічних працівників (наказ МОН від 09.09.2022 № 805 зі змінами) і Професійного стандарту «Вчитель закладу загальної середньої освіти» (наказ МОН від 29.08.2024 № 1225).</p>' +
+    '<div class="howto"><div><b>Час</b>30–40 хвилин; можна заповнювати частинами</div><div><b>Чернетка</b>зберігається автоматично в цьому браузері</div><div><b>Надсилання</b>кнопка в кінці; повторне надсилання оновить картку</div></div></section>' +
+
+    '<section class="card" id="s1"><div class="sec-head"><div><h2>1. Загальні відомості</h2></div></div><div class="grid">' +
+    fld('fio', 'Прізвище, власне ім’я, по батькові', { req: true, span: 's4', ac: 'name' }) +
+    fld('position', 'Посада', { span: 's2' }) +
+    fld('subjects', 'Предмет(и), які викладаєте', { req: true, span: 's3' }) +
+    fld('email', 'Електронна пошта', { req: true, type: 'email', span: 's3', ac: 'email', err: 'Вкажіть адресу у форматі name@example.com' }) +
+    fld('eduLevel', 'Освітній рівень', { req: true, type: 'select', opts: EDU, span: 's3' }) +
+    fld('phone', 'Телефон', { type: 'tel', span: 's3', ac: 'tel' }) +
+    fld('eduInst', 'Заклад вищої освіти, рік закінчення', { span: 's3' }) +
+    fld('eduSpec', 'Спеціальність і кваліфікація за дипломом', { span: 's3' }) +
+    fld('stazh', 'Педагогічний стаж, повних років', { req: true, type: 'number', span: 's2' }) +
+    fld('stazhHere', 'Стаж у цьому закладі, років', { type: 'number', span: 's2' }) +
+    fld('prevAtt', 'Рік попередньої атестації', { type: 'number', span: 's2' }) +
+    fld('curCat', 'Наявна кваліфікаційна категорія', { req: true, type: 'select', opts: CATS, span: 's3' }) +
+    fld('curTitle', 'Наявне педагогічне звання', { type: 'select', opts: TITLES, span: 's3' }) +
+    fld('attType', 'Вид атестації', { type: 'select', opts: ATT, span: 's2' }) +
+    fld('goalCat', 'Мета атестації: кваліфікаційна категорія', { req: true, type: 'select', opts: GOAL_CAT, span: 's2' }) +
+    fld('goalTitle', 'Мета атестації: педагогічне звання', { type: 'select', opts: GOAL_TITLE, span: 's2' }) +
+    '</div></section>' +
+
+    '<section class="card" id="s2"><div class="sec-head"><div><h2>2. Підвищення кваліфікації за міжатестаційний період</h2><p class="lead">Для атестації сумарний обсяг за останні 5 років має становити не менше 150 годин. Позначте «ООП», якщо тематика стосується роботи з учнями з особливими освітніми потребами.</p></div></div>' +
+    '<div id="rep-pk">' + repHtml('pk') + '</div><div class="rep-foot"><button type="button" class="btn sm" data-add="pk">+ Додати рядок</button><div class="total" id="pk-total"></div></div></section>' +
+
+    '<section class="card" id="s3"><div class="sec-head"><div><h2>3. Опис власного педагогічного досвіду</h2><p class="lead">Коротко і по суті: 3–6 речень у кожному полі. Посилайтеся на конкретні класи, теми, інструменти, результати.</p></div></div><div class="grid">' +
+    fld('expTopic', 'Тема (проблема), над якою працюєте', { req: true, span: 's6' }) +
+    fld('expActual', 'Актуальність: чому ця проблема важлива для ваших учнів', { type: 'textarea', span: 's3', rows: 4 }) +
+    fld('expIdea', 'Провідна педагогічна ідея', { type: 'textarea', span: 's3', rows: 4 }) +
+    fld('expTheory', 'Теоретичне підґрунтя (на які підходи, дослідження, авторів спираєтесь)', { type: 'textarea', span: 's6', rows: 3 }) +
+    fld('expTech', 'Технологія досвіду: методи, прийоми, форми роботи, цифрові інструменти', { type: 'textarea', span: 's6', rows: 5 }) +
+    fld('expResult', 'Результативність: що змінилося в учнів і як це видно (дані, приклади)', { type: 'textarea', span: 's6', rows: 5 }) +
+    fld('expFuture', 'Перспективи: як плануєте розвивати досвід', { type: 'textarea', span: 's6', rows: 3 }) +
+    fld('portfolio', 'Посилання на електронне портфоліо або папку з матеріалами', { type: 'url', span: 's6', ph: 'https://…', hint: 'Google Диск, Padlet, сайт тощо. Відкрийте доступ для перегляду за посиланням.' }) +
+    '</div></section>' +
+
+    '<section class="card" id="s4"><div class="sec-head"><div><h2>4. Самооцінювання професійних компетентностей</h2><p class="lead">За Професійним стандартом «Вчитель закладу загальної середньої освіти» (2024). Оцініть кожну компетентність за шкалою від 1 до 4.</p></div></div>' +
+    '<div class="scale-legend">' + SCALE.map(function (s) { return '<div><b>' + s[0] + '</b> — ' + s[1] + ': ' + s[2] + '</div>'; }).join('') + '</div>' +
+    comps + '<div><h3>Ваш профіль компетентностей</h3><div class="compsum" id="compsum" aria-hidden="true"></div><p class="hint" id="comp-avg"></p></div></section>' +
+
+    '<section class="card" id="s5"><div class="sec-head"><div><h2>5. Результати навчання і досягнення учнів</h2></div></div><div class="grid">' +
+    fld('studentsDyn', 'Динаміка результатів навчання учнів (оцінювання, моніторинги, ДПА, НМТ)', { type: 'textarea', span: 's6', rows: 4 }) +
+    '</div><h3>Участь учнів в олімпіадах, конкурсах, МАН, змаганнях</h3><div id="rep-ach">' + repHtml('ach') + '</div><div class="rep-foot"><button type="button" class="btn sm" data-add="ach">+ Додати рядок</button></div><div class="grid">' +
+    fld('extracurr', 'Позакласна, гурткова, проєктна робота з учнями', { type: 'textarea', span: 's6', rows: 3 }) +
+    '</div></section>' +
+
+    '<section class="card" id="s6"><div class="sec-head"><div><h2>6. Методична діяльність і поширення досвіду</h2></div></div>' +
+    '<div id="rep-meth">' + repHtml('meth') + '</div><div class="rep-foot"><button type="button" class="btn sm" data-add="meth">+ Додати рядок</button></div><div class="grid">' +
+    fld('methodCmk', 'Участь у роботі ЦМК, творчих груп, проєктах закладу', { type: 'textarea', span: 's6', rows: 3 }) +
+    '</div></section>' +
+
+    '<section class="card" id="s7"><div class="sec-head"><div><h2>7. Відповідність меті атестації</h2><p class="lead">Позначте те, що стосується вашої діяльності, і вкажіть підтвердження. Для педагогічного звання це особливо важливо. Рішення ухвалює атестаційна комісія.</p></div></div>' +
+    '<div class="check-box" id="cat-check"></div><div class="tchk">' + tchk + '</div></section>' +
+
+    '<section class="card" id="s8"><div class="sec-head"><div><h2>8. Самоаналіз і надсилання</h2></div></div><div class="grid">' +
+    fld('selfBest', 'Найважливіші професійні здобутки за міжатестаційний період', { type: 'textarea', span: 's3', rows: 4 }) +
+    fld('selfNext', 'Над чим плануєте працювати далі', { type: 'textarea', span: 's3', rows: 4 }) +
+    '</div><label class="agree" for="f-agree" id="w-agree"><input type="checkbox" id="f-agree" data-k="agree"' + (D.agree ? ' checked' : '') + '><span>Підтверджую достовірність інформації та погоджуюся, що її опрацює атестаційна комісія закладу.<span class="req" aria-hidden="true">*</span></span></label>' +
+    '<div class="card submit-card" style="padding:16px 18px"><div class="actions"><button type="button" class="btn primary" id="send">Надіслати картку</button><button type="button" class="btn" id="word">Завантажити копію у Word</button><button type="button" class="btn ghost" id="reset">Почати нову картку</button></div><div id="send-status" class="status" role="status" aria-live="polite"></div></div></section>';
+  bind();
+  refresh();
+}
+
+/* ===== Оновлення індикаторів ===== */
+function refresh() {
+  let all = 0, ok = 0;
+  SECTIONS.forEach(function (s) {
+    const xs = s.check(), n = xs.filter(filled).length;
+    all += xs.length; ok += n;
+    const a = $('#toc-' + s.id);
+    if (a) a.className = n === xs.length ? 'done' : (n ? 'part' : '');
+    if (a) a.querySelector('.dot').textContent = n === xs.length ? '✓' : (SECTIONS.indexOf(s) + 1);
+  });
+  const pct = Math.round(ok * 100 / all);
+  $('#meter-t').textContent = 'Заповнено ' + pct + '%';
+  $('#mb-meter').textContent = 'Заповнено ' + pct + '%';
+  $('#meter-b').style.width = pct + '%';
+  const th = totalHours(), oh = oopHours();
+  $('#pk-total').innerHTML = 'Разом: <b>' + th + ' год</b>' + (oh ? ' (з них ООП: ' + oh + ' год)' : '') + ' <span class="bar"><i class="' + (th >= 150 ? 'ok' : '') + '" style="width:' + Math.min(100, th / 150 * 100) + '%"></i></span> ' + (th >= 150 ? '<span style="color:var(--hi)">150 год досягнуто</span>' : '<span class="hint">до 150 год бракує ' + Math.max(0, 150 - th) + '</span>');
+  const avg = compAvg();
+  $('#compsum').innerHTML = COMP_LIST.map(function (c) { const l = D.comp[c[0]].lvl; return '<div class="col" title="' + esc(c[1]) + ': ' + (l || '—') + '"><i style="height:' + (l ? l * 15 : 2) + 'px;' + (l ? '' : 'background:var(--line)') + '"></i><span>' + c[0] + '</span></div>'; }).join('');
+  const rated = COMP_LIST.filter(function (c) { return D.comp[c[0]].lvl; });
+  $('#comp-avg').textContent = rated.length ? 'Оцінено ' + rated.length + ' з 12 · середній рівень ' + String(avg).replace('.', ',') + ' з 4' : 'Оцініть компетентності — тут з’явиться ваш профіль.';
+  const cc = $('#cat-check');
+  const req = CAT_REQ[D.goalCat];
+  if (!D.goalCat) { cc.className = 'check-box'; cc.textContent = 'Оберіть мету атестації в розділі 1 — тут з’явиться перевірка освітнього рівня і стажу.'; }
+  else if (D.goalCat === 'confirm') { cc.className = 'check-box'; cc.textContent = 'Мета — відповідність раніше присвоєній категорії: ' + (label(CATS, D.curCat) || 'вкажіть наявну категорію в розділі 1') + '.'; }
+  else if (req) {
+    const eduOk = req.edu.indexOf(D.eduLevel) >= 0, stOk = num(D.stazh) >= req.years;
+    const good = eduOk && stOk && filled(D.stazh);
+    cc.className = 'check-box ' + (good ? 'ok' : 'warn');
+    cc.textContent = (good ? 'Освітній рівень і стаж відповідають вимогам до категорії ' : 'Перевірте вимоги до категорії ') + label(GOAL_CAT, D.goalCat).replace('Присвоєння ', '') + ': ' + req.txt + '.';
+  }
+}
+
+/* ===== Події ===== */
+function bind() {
+  const form = $('#card');
+  form.addEventListener('submit', function (e) { e.preventDefault(); });
+  form.addEventListener('input', onEdit);
+  form.addEventListener('change', onEdit);
+  form.addEventListener('click', function (e) {
+    const add = e.target.closest('[data-add]');
+    if (add) { const k = add.dataset.add; const row = {}; REPS[k].cols.forEach(function (c) { row[c.k] = c.type === 'check' ? false : (c.k === 'year' ? String(new Date().getFullYear()) : ''); }); D[k].push(row); redrawRep(k); const first = $('#rb-' + k + ' tr:last-child input, #rb-' + k + ' tr:last-child select'); const inputs = $$('#rb-' + k + ' tr:last-child input[type=text]'); if (inputs[0]) inputs[0].focus(); else if (first) first.focus(); save(); refresh(); return; }
+    const del = e.target.closest('[data-del]');
+    if (del) { const k = del.dataset.del; D[k].splice(+del.dataset.i, 1); redrawRep(k); save(); refresh(); return; }
+  });
+  $('#send').addEventListener('click', send);
+  $('#mb-send').addEventListener('click', send);
+  $('#word').addEventListener('click', exportWord);
+  $('#reset').addEventListener('click', resetCard);
+}
+function redrawRep(k) { $('#rep-' + k).innerHTML = repHtml(k); }
+function onEdit(e) {
+  const t = e.target;
+  if (t.dataset.k) {
+    const k = t.dataset.k;
+    D[k] = t.type === 'checkbox' ? t.checked : t.value;
+    const w = $('#w-' + k); if (w) w.classList.remove('err');
+  } else if (t.dataset.rep) {
+    D[t.dataset.rep][+t.dataset.i][t.dataset.c] = t.type === 'checkbox' ? t.checked : t.value;
+  } else if (t.dataset.comp && e.type === 'change') {
+    D.comp[t.dataset.comp].lvl = +t.value;
+  } else if (t.dataset.compex) {
+    D.comp[t.dataset.compex].ex = t.value;
+  } else if (t.dataset.tchk) {
+    D.tchk[t.dataset.tchk].on = t.checked;
+  } else if (t.dataset.tproof) {
+    D.tchk[t.dataset.tproof].proof = t.value;
+    if (filled(t.value) && !D.tchk[t.dataset.tproof].on) { D.tchk[t.dataset.tproof].on = true; const cb = $('#t-' + t.dataset.tproof); if (cb) cb.checked = true; }
+  } else return;
+  save(); refresh();
+}
+
+/* ===== Перевірка ===== */
+function validate() {
+  const errs = [];
+  const need = [['fio', 'ПІБ'], ['subjects', 'предмет(и)'], ['email', 'електронну пошту'], ['eduLevel', 'освітній рівень'], ['stazh', 'педагогічний стаж'], ['curCat', 'наявну категорію'], ['goalCat', 'мету атестації'], ['expTopic', 'тему досвіду']];
+  $$('.fld.err').forEach(function (w) { w.classList.remove('err'); });
+  need.forEach(function (n) { if (!filled(D[n[0]])) { errs.push({ k: n[0], t: 'Вкажіть ' + n[1] + '.' }); } });
+  if (filled(D.email) && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(D.email.trim())) errs.push({ k: 'email', t: 'Перевірте адресу електронної пошти.' });
+  if (!D.agree) errs.push({ k: 'agree', t: 'Підтвердьте достовірність інформації (розділ 8).' });
+  errs.forEach(function (x) { const w = $('#w-' + x.k); if (w && w.classList.contains('fld')) w.classList.add('err'); });
+  return errs;
+}
+
+/* ===== Дані для таблиці й документа ===== */
+function summary() {
+  const comps = {}; COMP_LIST.forEach(function (c) { comps[c[0]] = D.comp[c[0]].lvl || ''; });
+  return { eduLevel: label(EDU, D.eduLevel), curCat: label(CATS, D.curCat), curTitle: label(TITLES, D.curTitle), attType: label(ATT, D.attType),
+    goalCat: label(GOAL_CAT, D.goalCat), goalTitle: D.goalTitle === 'none' ? '' : label(GOAL_TITLE, D.goalTitle),
+    pkHours: totalHours(), pkOop: oopHours(), compAvg: compAvg() || '', comps: comps, achCount: D.ach.length, methCount: D.meth.length };
+}
+function blocks() {
+  const s = summary();
+  const B = [];
+  B.push({ t: 'title', text: CONFIG.school });
+  B.push({ t: 'title', text: 'КАРТКА ВИВЧЕННЯ ПЕДАГОГІЧНОГО ДОСВІДУ' });
+  B.push({ t: 'note', text: 'педагогічного працівника, який атестується у ' + CONFIG.year + ' н. р.' });
+  B.push({ t: 'h', text: '1. Загальні відомості' });
+  B.push({ t: 'kv', rows: [['Прізвище, власне ім’я, по батькові', D.fio], ['Посада', D.position], ['Предмет(и)', D.subjects], ['Електронна пошта', D.email], ['Телефон', D.phone],
+    ['Освітній рівень', s.eduLevel], ['Заклад вищої освіти, рік закінчення', D.eduInst], ['Спеціальність і кваліфікація', D.eduSpec],
+    ['Педагогічний стаж, років', D.stazh], ['Стаж у закладі, років', D.stazhHere], ['Рік попередньої атестації', D.prevAtt],
+    ['Наявна кваліфікаційна категорія', s.curCat], ['Наявне педагогічне звання', s.curTitle], ['Вид атестації', s.attType],
+    ['Мета: кваліфікаційна категорія', s.goalCat], ['Мета: педагогічне звання', s.goalTitle || 'не претендую']] });
+  B.push({ t: 'h', text: '2. Підвищення кваліфікації за міжатестаційний період' });
+  B.push({ t: 'table', head: ['Рік', 'Суб’єкт', 'Тема, програма', 'Форма', 'Годин', 'ООП', 'Документ'], widths: [700, 1700, 2500, 1200, 800, 700, 1755],
+    rows: D.pk.map(function (r) { return [r.year, r.provider, r.topic, r.form, r.hours, r.oop ? 'так' : '', r.doc]; }) });
+  B.push({ t: 'p', label: 'Разом', text: s.pkHours + ' год' + (s.pkOop ? ' (з них з тематики ООП — ' + s.pkOop + ' год)' : '') });
+  B.push({ t: 'h', text: '3. Опис власного педагогічного досвіду' });
+  [['Тема (проблема)', D.expTopic], ['Актуальність', D.expActual], ['Провідна педагогічна ідея', D.expIdea], ['Теоретичне підґрунтя', D.expTheory], ['Технологія досвіду', D.expTech], ['Результативність', D.expResult], ['Перспективи', D.expFuture], ['Портфоліо, матеріали', D.portfolio]]
+    .forEach(function (p) { B.push({ t: 'p', label: p[0], text: p[1] }); });
+  B.push({ t: 'h', text: '4. Самооцінювання професійних компетентностей (Професійний стандарт, 2024)' });
+  B.push({ t: 'table', head: ['Код', 'Компетентність', 'Рівень (1–4)', 'Приклад із практики'], widths: [700, 3000, 1100, 4555],
+    rows: COMP_LIST.map(function (c) { const x = D.comp[c[0]]; return [c[0], c[1], x.lvl ? x.lvl + ' — ' + SCALE[x.lvl - 1][1].toLowerCase() : '', x.ex]; }) });
+  B.push({ t: 'p', label: 'Середній рівень', text: s.compAvg ? String(s.compAvg).replace('.', ',') + ' з 4' : '' });
+  B.push({ t: 'h', text: '5. Результати навчання і досягнення учнів' });
+  B.push({ t: 'p', label: 'Динаміка результатів навчання', text: D.studentsDyn });
+  B.push({ t: 'table', head: ['Рік', 'Захід', 'Рівень', 'Учень (учениця), клас', 'Результат'], widths: [700, 3000, 1500, 2300, 1855],
+    rows: D.ach.map(function (r) { return [r.year, r.event, r.level, r.student, r.result]; }) });
+  B.push({ t: 'p', label: 'Позакласна, гурткова, проєктна робота', text: D.extracurr });
+  B.push({ t: 'h', text: '6. Методична діяльність і поширення досвіду' });
+  B.push({ t: 'table', head: ['Рік', 'Вид', 'Назва, тема', 'Рівень', 'Посилання, підтвердження'], widths: [700, 2000, 3000, 1400, 2255],
+    rows: D.meth.map(function (r) { return [r.year, r.kind, r.title, r.level, r.link]; }) });
+  B.push({ t: 'p', label: 'Участь у роботі ЦМК, творчих груп, проєктах', text: D.methodCmk });
+  B.push({ t: 'h', text: '7. Відповідність меті атестації' });
+  B.push({ t: 'table', head: ['Напрям діяльності', 'Позначка', 'Підтвердження'], widths: [4300, 1000, 4055],
+    rows: TCHK.map(function (t) { const x = D.tchk[t[0]]; return [t[1], x.on ? 'так' : '—', x.proof]; }) });
+  B.push({ t: 'h', text: '8. Самоаналіз' });
+  B.push({ t: 'p', label: 'Найважливіші здобутки', text: D.selfBest });
+  B.push({ t: 'p', label: 'Над чим планую працювати', text: D.selfNext });
+  B.push({ t: 'p', label: 'Підтвердження', text: D.agree ? 'Достовірність інформації підтверджую.' : '' });
+  B.push({ t: 'p', label: 'Дата заповнення', text: new Date().toLocaleDateString('uk-UA') });
+  return B;
+}
+
+/* ===== Надсилання ===== */
+let sending = false;
+async function send() {
+  if (sending) return;
+  const st = $('#send-status');
+  const errs = validate();
+  if (errs.length) {
+    st.className = 'status err';
+    st.innerHTML = '<ul class="errlist">' + errs.map(function (x) { return '<li>' + esc(x.t) + '</li>'; }).join('') + '</ul>';
+    const w = $('#w-' + errs[0].k); if (w) { w.scrollIntoView({ block: 'center' }); const c = $('input,select,textarea', w); if (c) c.focus({ preventScroll: true }); }
+    toast('Заповніть обов’язкові поля');
+    return;
+  }
+  if (!CONFIG.endpoint) { st.className = 'status warn'; st.textContent = 'Надсилання ще не налаштоване. Завантажте копію у Word і передайте її заступнику директора.'; return; }
+  sending = true; $('#send').disabled = true; $('#mb-send').disabled = true;
+  st.className = 'status'; st.textContent = 'Надсилаю…';
+  const payload = JSON.stringify({ id: D.id, version: 1, submittedAt: new Date().toISOString(), data: D, summary: summary(), blocks: blocks() });
+  let ok = false, confirmed = false;
+  try {
+    const r = await fetch(CONFIG.endpoint, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: payload, redirect: 'follow' });
+    const j = await r.json();
+    if (j && j.ok) { ok = true; confirmed = true; } else throw new Error((j && j.error) || 'server');
+  } catch (err) {
+    try { await fetch(CONFIG.endpoint, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: payload }); ok = true; } catch (e2) { ok = false; }
+  }
+  sending = false; $('#send').disabled = false; $('#mb-send').disabled = false;
+  if (ok) {
+    const again = !!D.sentAt;
+    D.sentAt = new Date().toISOString(); save();
+    st.className = 'status ok';
+    st.innerHTML = '<div class="done-box">' + (again ? 'Оновлену картку надіслано.' : 'Картку надіслано заступнику директора.') + (confirmed ? '' : ' Якщо сумніваєтеся, що вона дійшла, завантажте копію у Word і передайте особисто.') + ' Якщо щось виправите, просто надішліть ще раз: картка оновиться.</div>';
+    toast(again ? 'Картку оновлено' : 'Картку надіслано');
+  } else {
+    st.className = 'status err';
+    st.textContent = 'Не вдалося надіслати. Перевірте інтернет і спробуйте ще раз. Усе, що ви заповнили, збережено в чернетці.';
+  }
+}
+
+/* ===== Word ===== */
+async function exportWord() {
+  const Dx = window.docx;
+  if (!Dx) { toast('Модуль Word ще завантажується. Спробуйте за кілька секунд.'); return; }
+  try {
+    const blob = await Dx.Packer.toBlob(blocksToDocx(Dx, blocks()));
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'Картка атестації ' + (D.fio ? D.fio.trim().split(/\s+/)[0] : 'вчителя') + '.docx';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+  } catch (e) { console.error(e); toast('Не вдалося сформувати документ Word.'); }
+}
+function blocksToDocx(X, B) {
+  const C = X.AlignmentType.CENTER, W = 9355;
+  const run = function (t, o) { o = o || {}; return new X.TextRun({ text: String(t), bold: !!o.b, italics: !!o.i, size: o.size }); };
+  const para = function (kids, o) { o = o || {}; return new X.Paragraph({ alignment: o.align, keepNext: !!o.keepNext, spacing: { before: o.before || 0, after: o.after == null ? 80 : o.after }, children: kids }); };
+  const cell = function (t, w, o) { o = o || {}; return new X.TableCell({ width: { size: w, type: X.WidthType.DXA }, shading: o.fill ? { fill: o.fill, type: X.ShadingType.CLEAR, color: 'auto' } : undefined, margins: { top: 40, bottom: 40, left: 80, right: 80 },
+    children: String(t == null || t === '' ? (o.dash ? '—' : '') : t).split('\n').map(function (l) { return para([run(l, { b: o.b, size: 21 })], { after: 0 }); }) }); };
+  const table = function (widths, rows) { return new X.Table({ width: { size: W, type: X.WidthType.DXA }, columnWidths: widths, rows: rows.map(function (r, i) { return new X.TableRow({ tableHeader: !!r.h, cantSplit: true, children: r.c }); }) }); };
+  const out = [];
+  B.forEach(function (b) {
+    if (b.t === 'title') out.push(para([run(b.text, { b: true, size: 26 })], { align: C, after: 60 }));
+    else if (b.t === 'note') out.push(para([run(b.text, { i: true, size: 22 })], { align: C, after: 200 }));
+    else if (b.t === 'h') out.push(para([run(b.text, { b: true, size: 25 })], { before: 240, after: 100, keepNext: true }));
+    else if (b.t === 'kv') out.push(table([3400, 5955], b.rows.map(function (r) { return { c: [cell(r[0], 3400, { b: true, fill: 'EEF2F7' }), cell(r[1], 5955, { dash: true })] }; })));
+    else if (b.t === 'table') {
+      if (!b.rows.length) { out.push(para([run('—')])); return; }
+      const ws = b.widths;
+      out.push(table(ws, [{ h: true, c: b.head.map(function (x, i) { return cell(x, ws[i], { b: true, fill: 'E3EAF5' }); }) }].concat(b.rows.map(function (r) { return { c: r.map(function (x, i) { return cell(x, ws[i]); }) }; }))));
+    }
+    else if (b.t === 'p') {
+      const lines = String(b.text == null || b.text === '' ? '—' : b.text).split('\n');
+      out.push(para([run(b.label + ': ', { b: true })].concat(lines.map(function (l, i) { return new X.TextRun({ text: l, break: i ? 1 : 0 }); })), { after: 100 }));
+    }
+  });
+  out.push(para([run('')], { after: 240 }));
+  out.push(para([run('Педагогічний працівник: ', { b: true }), run('____________   ' + (D.fio || '______________________'))]));
+  return new X.Document({ creator: 'Картка атестації', title: 'Картка вивчення педагогічного досвіду', styles: { default: { document: { run: { font: 'Times New Roman', size: 24 } } } },
+    sections: [{ properties: { page: { size: { width: 11906, height: 16838 }, margin: { top: 1134, right: 850, bottom: 1134, left: 1701 } } }, children: out }] });
+}
+
+/* ===== Нова картка ===== */
+function resetCard() {
+  const box = document.createElement('div');
+  box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true');
+  box.style.cssText = 'position:fixed;inset:0;background:rgba(10,15,25,.45);display:grid;place-items:center;z-index:50;padding:16px';
+  box.innerHTML = '<div class="card" style="max-width:440px;width:100%"><h2>Почати нову картку?</h2><p>Усе, що заповнено в цьому браузері, буде очищено. Уже надіслана картка залишиться в заступника директора.</p><div class="actions" style="justify-content:flex-end"><button type="button" class="btn" id="rs-no">Скасувати</button><button type="button" class="btn primary" id="rs-yes">Очистити</button></div></div>';
+  document.body.appendChild(box);
+  const close = function () { box.remove(); };
+  $('#rs-no', box).onclick = close;
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  $('#rs-yes', box).onclick = function () { D = blank(); try { localStorage.removeItem(LS); } catch (e) { } close(); render(); window.scrollTo(0, 0); toast('Картку очищено'); };
+  $('#rs-yes', box).focus();
+}
+
+render();
+if (D.sentAt) { const st = $('#send-status'); st.className = 'status ok'; st.innerHTML = '<div class="done-box">Цю картку вже надіслано ' + new Date(D.sentAt).toLocaleDateString('uk-UA') + '. Якщо щось виправите, надішліть ще раз: картка оновиться.</div>'; }
+})();
+</script>
+</body>
+</html>
